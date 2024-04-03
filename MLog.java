@@ -1,4 +1,4 @@
-package com.melody.uu.debug;
+package com.aurora.melody;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -10,9 +10,9 @@ import java.util.logging.SimpleFormatter;
 public class MLog {
 
     /* whether to save log to file */
-    private final static boolean LOG_FILE_SWITCHER = false;
+    private static boolean LOG_FILE_SWITCHER = false;
 
-    private final static int MAX_WIDTH = 140;
+    private static int MAX_WIDTH = 140;
 
     private final static int FORMAT_WIDTH = 37;
 
@@ -211,6 +211,16 @@ public class MLog {
         } catch (Exception e) {
             logger.warning("[WARNING]: " + e.getMessage());
         }
+    }
+
+    public static void SetSwitcher(boolean switcher) {
+        LOG_FILE_SWITCHER = switcher;
+    }
+
+    public static void SetMaxWidth(int max) {
+        if (max < 40)
+            max = 140;
+        MAX_WIDTH = max;
     }
 
     enum LogLevel {
